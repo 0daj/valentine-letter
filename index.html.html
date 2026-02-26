@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial ❤️</title>
+    <style>
+        /* CSS INTEGRADO */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe4e1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Impede que apareçam barras de scroll quando o botão foge */
+        }
+
+        .card {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 4px solid #ffb6c1;
+            z-index: 1;
+        }
+
+        h1 { color: #d63384; }
+
+        .btn-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff6b6b;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* O SEGREDO ESTÁ AQUI: Position FIXED ou ABSOLUTE */
+        #noBtn {
+            background-color: #ced4da;
+            color: #495057;
+            position: fixed; /* Isso permite que ele se mova por todo o ecrã */
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Queres ser o meu Valentine? 🌸</h1>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjYzcjk5M2VxdTJscDlyam52YzNpbWc1bjg0aDRlc29oMWRld2FnaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SYeAP17mD2FOIR2CzR/giphy.gif" width="200">
+        
+        <div class="btn-container">
+            <button id="yesBtn">SIM</button>
+            <button id="noBtn">NÃO</button>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT INTEGRADO
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        // Função que move o botão para um lugar aleatório
+        function moveNoButton() {
+            // Calcula limites para o botão não sair totalmente do ecrã
+            const padding = 20;
+            const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Tenta fugir quando o rato passa por cima (Desktop)
+        noBtn.addEventListener('mouseover', moveNoButton);
+
+        // Tenta fugir quando alguém clica (importante para Telemóveis)
+        noBtn.addEventListener('click', moveNoButton);
+
+        // Ação para o botão SIM
+        yesBtn.addEventListener('click', () => {
+            alert("Sabia que ias aceitar! ❤️😍");
+            // Se quiseres que mude a imagem ou texto ao clicar no SIM, avisa-me!
+        });
+    </script>
+
+</body>
+</html>
