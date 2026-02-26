@@ -77,32 +77,39 @@
     <script>
         // JAVASCRIPT INTEGRADO
         const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
+const yesBtn = document.getElementById('yesBtn');
 
-        // Função que move o botão para um lugar aleatório
-        function moveNoButton() {
-            // Calcula limites para o botão não sair totalmente do ecrã
-            const padding = 20;
-            const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
+function moveNoButton() {
+    const padding = 20;
+    const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
+    const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
+    const randomX = Math.floor(Math.random() * maxWidth);
+    const randomY = Math.floor(Math.random() * maxHeight);
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+}
 
-            const randomX = Math.floor(Math.random() * maxWidth);
-            const randomY = Math.floor(Math.random() * maxHeight);
+noBtn.addEventListener('mouseover', moveNoButton);
+noBtn.addEventListener('click', moveNoButton);
 
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        }
-
-        // Tenta fugir quando o rato passa por cima (Desktop)
-        noBtn.addEventListener('mouseover', moveNoButton);
-
-        // Tenta fugir quando alguém clica (importante para Telemóveis)
-        noBtn.addEventListener('click', moveNoButton);
-
-        // Ação para o botão SIM
-        yesBtn.addEventListener('click', () => {
-            alert("Sabia que ias aceitar! ❤️😍");
-            // Se quiseres que mude a imagem ou texto ao clicar no SIM, avisa-me!
+// AQUI ESTÁ A MUDANÇA:
+yesBtn.addEventListener('click', () => {
+    // Em vez de alert(), vamos criar um elemento na hora
+    const mensagem = document.createElement('div');
+    mensagem.innerHTML = `
+        <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                    background: white; padding: 20px; border-radius: 15px; border: 3px solid #ffb6c1;
+                    box-shadow: 0 0 20px rgba(0,0,0,0.2); z-index: 10000; text-align: center;">
+            <h2 style="color: #d63384; margin-top: 0;">Kelvin diz:</h2>
+            <p style="font-size: 1.2rem;">Sabia que ias aceitar! ❤️😍</p>
+            <button onclick="location.reload()" style="background: #ff6b6b; color: white; border: none; 
+                    padding: 10px 20px; border-radius: 5px; cursor: pointer;">Fechar</button>
+        </div>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: rgba(0,0,0,0.3); z-index: 9999;"></div>
+    `;
+    document.body.appendChild(mensagem);
+});
         });
     </script>
 
