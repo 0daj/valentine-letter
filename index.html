@@ -64,8 +64,7 @@
 <body>
 
     <div class="card">
-        <h1>Te amo meu amor 🌸</h1>
-        <h2> Você também me ama ?</h2>
+        <h1>Queres ser o meu Valentine? 🌸</h1>
         <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjYzcjk5M2VxdTJscDlyam52YzNpbWc1bjg0aDRlc29oMWRld2FnaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SYeAP17mD2FOIR2CzR/giphy.gif" width="200">
         
         <div class="btn-container">
@@ -77,26 +76,26 @@
     <script>
         // JAVASCRIPT INTEGRADO
         const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
+        const yesBtn = document.getElementById('yesBtn');
 
-function moveNoButton() {
-    const padding = 20;
-    const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
-    const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
-    const randomX = Math.floor(Math.random() * maxWidth);
-    const randomY = Math.floor(Math.random() * maxHeight);
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
+        function moveNoButton() {
+        const padding = 20;
+        const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
+        const randomX = Math.floor(Math.random() * maxWidth);
+        const randomY = Math.floor(Math.random() * maxHeight);
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
 }
 
-noBtn.addEventListener('mouseover', moveNoButton);
-noBtn.addEventListener('click', moveNoButton);
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('click', moveNoButton);
 
-// AQUI ESTÁ A MUDANÇA:
-yesBtn.addEventListener('click', () => {
-    // Em vez de alert(), vamos criar um elemento na hora
-    const mensagem = document.createElement('div');
-    mensagem.innerHTML = `
+        // AQUI ESTÁ A MUDANÇA:
+        yesBtn.addEventListener('click', () => {
+            // Em vez de alert(), vamos criar um elemento na hora
+            const mensagem = document.createElement('div');
+            mensagem.innerHTML = `
         <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
                     background: white; padding: 20px; border-radius: 15px; border: 3px solid #ffb6c1;
                     box-shadow: 0 0 20px rgba(0,0,0,0.2); z-index: 10000; text-align: center;">
@@ -110,7 +109,8 @@ yesBtn.addEventListener('click', () => {
     `;
     document.body.appendChild(mensagem);
 });
-        });
+        // Se quiseres que mude a imagem ou texto ao clicar no SIM, avisa-me!
+;
     </script>
 
 </body>
